@@ -1,0 +1,36 @@
+[project]
+name = "copenhagen-frames"
+version = "0.1.0"
+description = "How Copenhagen's neighbourhoods are described in Airbnb listings and reviews — COS-R434, University of Helsinki"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+
+# Core stack: notebooks 01–05 and 08.
+dependencies = [
+    "pandas>=2.2",
+    "pyarrow>=16.0",          # parquet
+    "tqdm>=4.66",
+    "geopandas>=1.0",
+    "pyogrio>=0.9",
+    "shapely>=2.0",
+    "fasttext-wheel>=0.9.2",  # language identification (lid.176)
+    "matplotlib>=3.9",
+    "marimo>=0.9",
+    "nltk>=3.10.3",
+    "scikit-learn>=1.9.0",    # keyword discovery in 03
+]
+
+# Modelling stack for 06 and 07 (BERTopic + PyTorch, several GB):
+#   uv sync --group modelling
+[dependency-groups]
+modelling = [
+    "bertopic>=0.16",
+    "sentence-transformers>=3.0",
+    "umap-learn>=0.5",
+    "hdbscan>=0.8.38",
+    "ipython>=9.17.1",        # sentence-transformers fails inside marimo without it
+]
+
+[tool.uv]
+# a plain `uv sync` does not install torch
+default-groups = []

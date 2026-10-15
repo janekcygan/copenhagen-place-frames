@@ -1,0 +1,26 @@
+# Data is never committed. Raw Airbnb review text must not be redistributed,
+# and reviews are written by identifiable people.
+data/raw/*
+data/interim/*
+data/processed/*
+!data/**/.gitkeep
+# the hand-filled topic marking from 07 (topic words, counts and notes; no review text)
+!data/processed/discovery_marks_2026-06-30.csv
+
+# fastText language-ID model (126 MB, downloaded by scripts/download_data.py)
+models/
+
+# generated figures
+figures/*
+!figures/.gitkeep
+
+# Python
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+__marimo__/
+
+# OS / editor
+.DS_Store
+.vscode/
